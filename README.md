@@ -42,7 +42,7 @@ book-review-service/
 - MongoDB Atlas account (free)
 - Git
 
-### Installation
+### Local Development
 
 1. **Clone the repository**
 ```bash
@@ -90,6 +90,10 @@ npm run dev
 - **Frontend:** http://localhost:5173
 - **Backend API:** http://localhost:5000
 - **Health Check:** http://localhost:5000/health
+
+### 🌐 Deploy to Vercel
+
+For production deployment, see [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) for complete setup guide.
 
 ## 📡 API Endpoints
 
