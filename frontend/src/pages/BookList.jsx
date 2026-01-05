@@ -34,14 +34,17 @@ const BookList = () => {
       setLoading(true);
       setError(null);
       
-      const params = { page, limit: 6 };
+      const params = { 
+        page: Number(page), 
+        limit: 6 
+      };
       if (searchTerm) params.search = searchTerm;
       if (sortOption) params.sort = sortOption;
 
       const response = await getAllBooks(params);
       setBooks(response.data.data);
       setPagination({
-        currentPage: response.data.currentPage || 1,
+        currentPage: response.data.currentPage || Number(page),
         totalPages: response.data.totalPages || 1,
         totalBooks: response.data.totalBooks || 0
       });
@@ -55,6 +58,7 @@ const BookList = () => {
 
   useEffect(() => {
     const delaySearch = setTimeout(() => {
+      setPagination(prev => ({ ...prev, currentPage: 1 }));
       fetchBooks(1);
     }, 300);
 
@@ -62,6 +66,7 @@ const BookList = () => {
   }, [searchTerm, sortOption]);
 
   const handlePageChange = (page) => {
+    setPagination(prev => ({ ...prev, currentPage: page }));
     fetchBooks(page);
   };
 
