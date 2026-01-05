@@ -18,11 +18,20 @@ const connectDB = async () => {
   if (isConnected) return;
   
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    const mongoUri = process.env.MONGODB_URI;
+    console.log('🔍 MongoDB URI exists:', !!mongoUri);
+    console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
+    
+    if (!mongoUri) {
+      throw new Error('MONGODB_URI environment variable is not set');
+    }
+    
+    await mongoose.connect(mongoUri);
     isConnected = true;
     console.log('✅ MongoDB Connected');
   } catch (error) {
     console.error('❌ MongoDB Connection Error:', error.message);
+    throw error;
   }
 };
 
@@ -33,8 +42,17 @@ app.use(express.urlencoded({ extended: true }));
 
 // Connect to database on each request
 app.use(async (req, res, next) => {
-  await connectDB();
-  next();
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error('❌ Database connection failed:', error.message);
+    res.status(500).json({
+      success: false,
+      message: 'Database connection failed',
+      error: error.message
+    });
+  }
 });
 
 // Routes
