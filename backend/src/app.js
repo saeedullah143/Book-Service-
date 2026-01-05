@@ -37,8 +37,9 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// Routes
+// Routes - Handle both /api and direct routes
 app.use('/api', bookRoutes);
+app.use('/', bookRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
