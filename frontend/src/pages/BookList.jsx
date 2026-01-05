@@ -75,7 +75,7 @@ const BookList = () => {
       setIsSubmitting(true);
       await addReview(bookId, reviewData);
       setSelectedBookId(null);
-      fetchBooks();
+      fetchBooks(pagination.currentPage);
       setToast({ message: 'Review added successfully!', type: 'success' });
     } catch (err) {
       setToast({ message: 'Failed to add review. Please try again.', type: 'error' });
@@ -90,7 +90,7 @@ const BookList = () => {
       setIsSubmitting(true);
       await createBook(bookData);
       setShowAddBookModal(false);
-      fetchBooks();
+      fetchBooks(1);
       setToast({ message: 'Book added successfully!', type: 'success' });
     } catch (err) {
       setToast({ message: 'Failed to add book. Please try again.', type: 'error' });
