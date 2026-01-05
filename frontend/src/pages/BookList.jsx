@@ -159,7 +159,7 @@ const BookList = () => {
       {error && (
         <div className="error-message">
           <p>{error}</p>
-          <button onClick={fetchBooks} className="retry-btn">
+          <button onClick={() => fetchBooks(1)} className="retry-btn">
             Try Again
           </button>
         </div>
