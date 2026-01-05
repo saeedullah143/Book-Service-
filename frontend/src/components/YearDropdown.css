@@ -1,0 +1,102 @@
+.year-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.year-dropdown-trigger {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: var(--font-sm);
+  background: #f8fafc;
+  color: #1f2937;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.year-dropdown-trigger:hover {
+  border-color: #cbd5e1;
+}
+
+.year-dropdown-trigger:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(15, 48, 83, 0.1);
+}
+
+.year-dropdown-trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.year-dropdown-trigger.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.chevron {
+  transition: transform 0.2s;
+  color: var(--primary-color);
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.year-dropdown-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 -8px 25px rgba(15, 48, 83, 0.15);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-bottom: 0.25rem;
+}
+
+.year-option {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  background: white;
+  color: #1f2937;
+  font-size: var(--font-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.year-option:hover {
+  background: rgba(15, 48, 83, 0.05);
+}
+
+.year-option.selected {
+  background: var(--primary-color);
+  color: white;
+}
+
+.year-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.year-dropdown-menu::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.year-dropdown-menu::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.year-dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
